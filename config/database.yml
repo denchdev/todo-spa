@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 1111
+  pool: 5
+
+development:
+  <<: *default
+  database: todo-spa_development
+
+test:
+  <<: *default
+  database: todo-spa_test
+
+production:
+  <<: *default
+  database: todo-spa_production
+  username: todo-spa
+  password: <%= ENV['TODO-SPA_DATABASE_PASSWORD'] %>
