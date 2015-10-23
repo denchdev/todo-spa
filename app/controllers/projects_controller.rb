@@ -4,11 +4,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    respond_with Project.create(project_params)
+    respond_with Project.create project_params 
   end
 
   def show
-    respond_with Project.find(params[:id])
+    respond_with Project.find params[:id] 
+  end
+
+  def destroy
+     respond_with Project.destroy params[:id]
   end
   
   private

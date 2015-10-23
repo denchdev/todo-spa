@@ -23,12 +23,13 @@ angular.module('todo').factory 'taskFactory', ->
       project_id: project.id
 
   service.deleteTask = (task) ->
-    _.pull tasks, tasks
+    _.pull tasks, task
 
   service.updateTask = (updatingTask) ->
     task = _.findWhere(tasks, id: updatingTask.id)
     task.title = updatingTask.title
     task.project_id = updatingTask.project_id  
 
+  console.log 'taskFac'
   service
 

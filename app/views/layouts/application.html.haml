@@ -4,34 +4,39 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body{"ng-app" => "todo"}
+  %body{"ng-app" => "todo"}    
     .row
       .col-md-8.col-md-offset-2
         %header
-          .row
+          .row            
             %h1.app-name.left
               ToDo
-        %section#lists-container.lists-container{"ng-controller": "projectsCtrl as projectsCtrl"}
+        .col-md-8.col-md-offset-2{"ng-controller": "projectsCtrl as projectsCtrl"}
           .row
-            %section.list.list-inline{"ng-repeat": "project in projectsCtrl.getProjects", "ng-controller": "projectCtrl as projectCtrl"}
+            .project{"ng-repeat": "project in projectsCtrl.projects", "ng-controller": "projectCtrl as projectCtrl"}
               %h1
+                %span.glyphicon.glyphicon-plus
                 {{project.title}}
-              .card{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in projectCtrl.getTasks(project)"}
+                %span.glyphicon.glyphicon-remove.management{"ng-click": "projectCtrl.removeProject(project)"}                
+              .task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in projectCtrl.getTasks(project)"}
                 %div{"ng-if": "!taskCtrl.isEditing"}
                   {{task.title}}
-                  .edit-small.edit-card.hand{{"ng-click": "taskCtrl.editTask(task)"}}
-                  .remove-small.remove-card.hand{{"ng-click": "taskCtrl.deleteTask(task)"}}
+                  %span.glyphicon.glyphicon-pencil.management{"ng-click": "taskCtrl.editTask(task)"}
+                  %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.deleteTask(task)"}
                 %div{"ng-if": "taskCtrl.isEditing"}
                   %form{"ng-submit": "taskCtrl.updateTask()"}
                     %input{"close-editing": "", "is-editing": "cardCtrl.isEditing", "ng-model": "taskCtrl.editingTask.title"}
-                    %select.select-list{"ng-model": "taskCtrl.editingTask.project_id", "ng-change": "taskCtrl.updateTask()", "ng-options": "project.id as project.projectTitle for project in projectCtrl.projects"}
-              %a.hand{"ng-click": "projectsCtrl.removeProject(project)"}
-                .remove.remove-list
+                    %select.select-list{"ng-model": "taskCtrl.editingTask.project_id", "ng-change": "taskCtrl.updateTask()", "ng-options": "project.id as project.projectTitle for project in projectCtrl.projects"}              
               %section.new-card
                 %form{"ng-submit": "projectCtrl.createTask(project)"}
                   %input.card-input{"ng-model": "projectCtrl.taskTitle", "placeholder": "New Task"}
           %section.list.new-list.list-inline
-            %form{"ng-submit": "projectsCtrl.createProject()"}
-              %input.card-input{"ng-model": "projectsCtrl.projectTitle"}
+            %form{"ng-submit": "projectsCtrl.addProject()"}
+              .input-group.input-group-lg
+              %input.card-input{"ng-model": "projectsCtrl.projectTitle", "placeholder": "New Project"}
+                
+        
+       
+              
 
 

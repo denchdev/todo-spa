@@ -1,4 +1,4 @@
-angular.module('todo').controller 'taskCtrl', (taskFactory) ->
+angular.module('todo').controller 'taskCtrl', (taskFactory) ->  
   @isEditing = false
   @editingTask = null
 
@@ -6,6 +6,7 @@ angular.module('todo').controller 'taskCtrl', (taskFactory) ->
     taskFactory.deleteTask task
 
   @editTask = (task) ->
+    console.log 'editTask click'
     @isEditing = true
     @editingTask = angular.copy task
 
@@ -13,3 +14,5 @@ angular.module('todo').controller 'taskCtrl', (taskFactory) ->
     taskFactory.updateTask @editingTask
     @editingTask = null
     @isEditing = false
+
+  @

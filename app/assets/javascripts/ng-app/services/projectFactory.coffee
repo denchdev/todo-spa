@@ -1,26 +1,25 @@
-angular.module('todo').factory 'projectFactory', ->
-	service = {}
-	projects = [
-		{
-			id: 1
-			title: 'first project'      
-		}
-		{
-			id: 2
-			title: 'second project'
-		}
-	]
+angular.module('todo').factory 'projectFactory', ($http)->
+  service = {}
+  projects = [
+    
+  ]
 
-	service.getProjects = ->
-		projects
+  service.getProjects = ->
+    $http.get('/projects.json')
+      .success (data) ->
+        angular.copy data, projects
+    projects
 
-	service.addProject = (projectTitle) ->
-		projects.push
-			id: _.uniqueId()
-			title: projectTitle
+  service.addProject = (projectTitle) ->
+    $http.post('/projects.json')
+      .success
+      
+    projects.push
+      id: _.uniqueId()
+      title: projectTitle
 
-	service.removeProject = (project) ->
-		_.pull projects, project
+  service.removeProject = (project) ->
+    _.pull projects, project
 
-	service
+  service
 
