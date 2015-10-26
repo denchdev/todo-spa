@@ -1,29 +1,23 @@
-angular.module('todo').factory 'taskFactory', ->
+angular.module('todo').factory 'taskFactory', ($http)->
   service = {}
-  tasks = [
-    {
-      id: 1
-      title: 'first task'  
-      project_id: 1    
-    }
-    {
-      id: 2
-      title: 'second task'
-      project_id: 1
-    }
-  ]
+  tasks = []
 
-  service.getTasks = (project)->
-    _.filter tasks, project_id: project.id
+  service.getTasks = (project)->  
+    $http.get('/projects/' + project.id + '/tasks.json')
+      .success (data) ->
+        data
+        console.log data  
+    
 
   service.createTask = (project, taskTitle) ->
-    tasks.push
-      id: _.uniqueId()
-      title: taskTitle
-      project_id: project.id
+    $http.post('/projects/' + project.id + '/tasks.json', {'title': taskTitle})
+      .success (data)->
+        tasks.push data 
 
-  service.deleteTask = (task) ->
-    _.pull tasks, task
+  service.deleteTask = (project, task) ->
+    $http.delete('/projects/' + project.id + '.json')
+      .success (data) ->
+        _.pull tasks, task
 
   service.updateTask = (updatingTask) ->
     task = _.findWhere(tasks, id: updatingTask.id)
