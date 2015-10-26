@@ -6,6 +6,7 @@ angular.module('todo').factory 'projectFactory', ($http)->
     $http.get('/projects.json')
       .success (data) ->
         angular.copy data, projects
+        console.log projects
     projects
 
   service.addProject = (projectTitle) ->

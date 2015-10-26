@@ -3,10 +3,7 @@ angular.module('todo').factory 'taskFactory', ($http)->
   tasks = []
 
   service.getTasks = (project)->  
-    $http.get('/projects/' + project.id + '/tasks.json')
-      .success (data) ->
-        data
-        console.log data  
+      
     
 
   service.createTask = (project, taskTitle) ->

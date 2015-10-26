@@ -11,30 +11,8 @@
           .row            
             %h1.app-name.left
               ToDo
-        .col-md-8.col-md-offset-2{"ng-controller": "projectsCtrl as projectsCtrl"}
-          .row
-            .project{"ng-repeat": "project in projectsCtrl.projects", "ng-controller": "projectCtrl as projectCtrl"}
-              %h1
-                %span.glyphicon.glyphicon-plus
-                {{project.title}}
-                %span.glyphicon.glyphicon-remove.management{"ng-click": "projectCtrl.removeProject(project)"}                
-              .task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in projectCtrl.getTasks(project)"}
-                %div{"ng-if": "!taskCtrl.isEditing"}
-                  {{task.title}}
-                  %span.glyphicon.glyphicon-pencil.management{"ng-click": "taskCtrl.editTask(task)"}
-                  %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.deleteTask(project, task)"}
-                %div{"ng-if": "taskCtrl.isEditing"}
-                  %form{"ng-submit": "taskCtrl.updateTask()"}
-                    %input{"close-editing": "", "is-editing": "cardCtrl.isEditing", "ng-model": "taskCtrl.editingTask.title"}
-                    %select.select-list{"ng-model": "taskCtrl.editingTask.project_id", "ng-change": "taskCtrl.updateTask()", "ng-options": "project.id as project.projectTitle for project in projectCtrl.projects"}              
-              %section.new-card
-                %form{"ng-submit": "projectCtrl.createTask(project)"}
-                  %input.card-input{"ng-model": "projectCtrl.taskTitle", "placeholder": "New Task"}
-          
-          %section.list.new-list.list-inline
-            %form{"ng-submit": "projectsCtrl.addProject()"}
-              .input-group.input-group-lg
-              %input.card-input{"ng-model": "projectsCtrl.projectTitle", "placeholder": "New Project"}
+        %div{"projects": "value"}
+        
                 
         
        

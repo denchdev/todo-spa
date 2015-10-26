@@ -1,0 +1,9 @@
+.col-md-8.col-md-offset-2{"ng-controller": "projectsCtrl as projectsCtrl"}
+  .row
+    .project{"ng-repeat": "project in projectsCtrl.projects", "ng-controller": "projectCtrl as projectCtrl"}
+      %div{"project": "value"}
+  
+  %section.list.new-list.list-inline
+    %form{"ng-submit": "projectsCtrl.addProject()"}
+      .input-group.input-group-lg
+      %input.card-input{"ng-model": "projectsCtrl.projectTitle", "placeholder": "New Project"}
