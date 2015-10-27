@@ -1,0 +1,10 @@
+.row
+  %h2
+    New project
+  %form{"ng-submit": "create()", "ng-init": "project={}"}
+    .form-group
+      %input.form-control{"ng-model": "project.title", "required": "", "autofocus": "", "placeholder": "Project title"}
+
+      %button.btn.btn-success.btn-block{:type=>"submit"}
+        %span.fa.fa-plus
+        Create
