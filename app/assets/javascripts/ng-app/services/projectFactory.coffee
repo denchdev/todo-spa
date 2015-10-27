@@ -2,8 +2,16 @@ angular.module('todo').factory 'projectFactory',
   [
     'Restangular', 
     (Restangular)->
-      getProjects: -> Restangular.all('projects').getList
-      addProject: (project) -> Restangular.all('projects').post project
+      service = {}      
+      projects = Restangular.all('projects')
+
+      service.getProjects = ->
+        projects.getList()
+
+      service.addProject = (project) ->
+        projects.post project
+
+      service       
   ]
   
 

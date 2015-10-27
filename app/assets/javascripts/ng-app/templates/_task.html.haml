@@ -1,12 +1,14 @@
-%div{"ng-if": "!taskCtrl.isEditing"}
-  %div.pull-right
-    %span.glyphicon.glyphicon-pencil.management{"ng-click": "taskCtrl.editTask(task)"}
-    %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.deleteTask(project, task)"}
-  %div
-    {{task.title}}
+/ %div{"ng-if": "!taskCtrl.isEditing"}
+/   %div.pull-right
+/     %span.glyphicon.glyphicon-pencil.management{"ng-click": "taskCtrl.editTask(task)"}
+/     %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.deleteTask(project, task)"}
+/   %div
+/     {{task.title}}
 
-%div{"ng-if": "taskCtrl.isEditing"}
-  %form{"ng-submit": "taskCtrl.updateTask()"}
-    %input{"close-editing": "", "is-editing": "cardCtrl.isEditing", "ng-model": "taskCtrl.editingTask.title"}
-    %select.select-list{"ng-model": "taskCtrl.editingTask.project_id", "ng-change": "taskCtrl.updateTask()", "ng-options": "project.id as project.projectTitle for project in projectCtrl.projects"}         
-%div{"comment": "value"}
+/ %div{"ng-if": "taskCtrl.isEditing"}
+/   %form{"ng-submit": "taskCtrl.updateTask()"}
+/     %input{"close-editing": "", "is-editing": "cardCtrl.isEditing", "ng-model": "taskCtrl.editingTask.title"}
+/     %select.select-list{"ng-model": "taskCtrl.editingTask.project_id", "ng-change": "taskCtrl.updateTask()", "ng-options": "project.id as project.projectTitle for project in projectCtrl.projects"}         
+/ %div{"comment": "value"}
+%h3
+  tAsks
