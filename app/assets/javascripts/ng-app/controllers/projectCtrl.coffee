@@ -1,13 +1,13 @@
 angular.module('todo').controller 'projectCtrl', (projectFactory, taskFactory) ->
   @removeProject = (project) ->
-    projectFactory.removeProject project 
+    console.log 's'
+    
     
   @getTasks = (project) ->
-    taskFactory.getTasks project
+    console.log 's'    
 
   @createTask = (project) ->
-    taskFactory.createTask project, @taskTitle
-    @taskTitle = ''
+    console.log 's'   
 
   @
 

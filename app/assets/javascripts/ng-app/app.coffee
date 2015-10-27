@@ -1,4 +1,4 @@
-angular.module('todo', ['templates', 'ngResource'])
+angular.module('todo', ['templates', 'restangular'])
 
   
 
