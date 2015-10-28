@@ -11,9 +11,7 @@ angular.module('todo', [
         id: '_id.$oid'      
       .setMethodOverriders ['put', 'delete'] 
       .setRequestSuffix '.json' 
-      .setErrorInterceptor (response)->
-        stopLoading()
-        displayError()
+      
   ]
   .config ['$stateProvider', '$urlRouterProvider',
     ($stateProvider, $urlRouterProvider) ->
@@ -27,6 +25,13 @@ angular.module('todo', [
           url: '/projects/new',
           templateUrl: 'ng-app/templates/new_project.html',
           controller: 'newProjectsCtrl'
+
+        .state 'log_in',
+          url: '/log_in',
+          template: '<h1>LOG IN</h1>',
+          controller:''
+
+
 
       $urlRouterProvider.otherwise '/projects'
 

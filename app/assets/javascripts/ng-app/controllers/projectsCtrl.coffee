@@ -1,12 +1,12 @@
 angular.module('todo').controller 'projectsCtrl',
-  [ 'projectFactory', '$state', (projectFactory, $state) ->  
-    @projects = projectFactory.getProjects().$object
-    console.log @projects
+  [ 'projectFactory', '$state', 
+  	(projectFactory, $state) ->  
+      @projects = projectFactory.getProjects()      
 
-    @addProject = ->
-      $state.go 'new_project'
+      @addProject = ->
+        $state.go 'new_project' 
 
-    @
+      @
     
   ]
 

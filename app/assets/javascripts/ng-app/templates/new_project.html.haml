@@ -1,10 +1,9 @@
-.row
+.row{"ng-controller": "newProjectsCtrl as newProjectsCtrl"}
   %h2
     New project
-  %form{"ng-submit": "create()", "ng-init": "project={}"}
+  %form{"ng-submit": "newProjectsCtrl.create()"}
     .form-group
-      %input.form-control{"ng-model": "project.title", "required": "", "autofocus": "", "placeholder": "Project title"}
+      %input.form-control{"ng-model": "newProjectsCtrl.project.title", "required": "", "autofocus": "", "placeholder": "Project title"}
 
-      %button.btn.btn-success.btn-block{:type=>"submit"}
-        %span.fa.fa-plus
+      %button.btn.btn-success.btn-block{"type": "submit"}
         Create

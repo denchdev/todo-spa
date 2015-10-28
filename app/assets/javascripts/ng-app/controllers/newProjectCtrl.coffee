@@ -4,8 +4,6 @@ angular.module('todo').controller 'newProjectsCtrl',
       projectFactory.addProject @project
         .then ->
           $state.go 'projects'
-
-    @
-    
+    @    
   ]
 

@@ -3,6 +3,6 @@
     .project{"ng-repeat": "project in projectsCtrl.projects", "ng-controller": "projectCtrl as projectCtrl"}
       %div{"project": "value"}
   
-  %button.btn.btn-lg.center-block{"ng-click": "new_project()"}
+  %button.btn.btn-lg.center-block{"ng-click": "projectsCtrl.addProject()"}
     %i.fa.fa-plus
     Add Project
