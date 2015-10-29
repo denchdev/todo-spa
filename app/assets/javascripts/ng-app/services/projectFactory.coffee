@@ -3,6 +3,7 @@ angular.module('todo').factory 'projectFactory',
     'Restangular', 
     (Restangular)->
       service = {} 
+
       projects = Restangular.all('projects')
 
       service.getProjects = ->

@@ -9,13 +9,14 @@ class TasksController < ApplicationController
   def show
     project = Project.find(params[:project_id])
     task = project.tasks.find(params[:id])
-    respond_with task
+    respond_with tasks
   end
 
   def create
     project = Project.find(params[:project_id])
     task = project.tasks.create(task_params)
-    respond_with post, comment
+    tasks = project.tasks
+    respond_with tasks
   end 
 
   private

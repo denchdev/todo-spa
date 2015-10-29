@@ -1,6 +1,6 @@
 .col-md-8.col-md-offset-2{"ng-controller": "projectsCtrl as projectsCtrl"}
   .row
-    .project{"ng-repeat": "project in projectsCtrl.projects", "ng-controller": "projectCtrl as projectCtrl"}
+    .project{"ng-controller": "projectCtrl as projectCtrl", "ng-repeat": "project in projectsCtrl.projects"}
       %div{"project": "value"}
   
   %button.btn.btn-lg.center-block{"ng-click": "projectsCtrl.addProject()"}

@@ -1,16 +1,15 @@
 %h1  
   %span.glyphicon.glyphicon-remove.management.pull-right{"ng-click": "projectCtrl.removeProject(project, projectsCtrl.projects)"}  
-  {{project.title}}     
+  {{project.title}}   
 
- 
 .new-card
   %span.glyphicon.glyphicon-plus.pull-left
-  %form{"ng-submit": "projectCtrl.createTask(project)"}
+  %form{"ng-submit": "projectCtrl.createTask(project, projectCtrl.task)"}
     %input.card-input{"ng-model": "projectCtrl.task.title", "placeholder": "New Task"}
     %button.btn.btn-success.pull-right
       New task
 
-
-.task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in projectCtrl.getTasks(project)"}
+.task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in project.tasks"}
   %div{"task": "value"}
+
 
