@@ -3,10 +3,12 @@ angular.module('todo').controller 'projectCtrl', (projectFactory, taskFactory) -
     taskFactory.getTasks project
 
   @removeProject = (project, projects) ->
-    projectFactory.removeProject project, projects          
+    projectFactory.removeProject project, projects 
+    
+
     
   @createTask = (project) ->
-    taskFactory.createTask project, @task  
+    taskFactory.createTask project, @task      
 
   @
 

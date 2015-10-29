@@ -8,11 +8,13 @@ angular.module('todo').factory 'taskFactory',
         console.log project.all('tasks').getList()
         console.log project
 
-      service.createTask = (project, task) ->        
-        console.log project
+      service.createTask = (project, task) ->   
+        Restangular.one('projects', project.id).all('tasks').post task
+        
 
       service.removeTask = (task) -> 
         Restangular.one('tasks', task.id).remove()
+        task = {}
     
       service.updateTask = (task) ->
         task_wrapper = {task: task}

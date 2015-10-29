@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def create
     project = Project.find(params[:project_id])
     task = project.tasks.create(task_params)
-    respond_with post, comment
+    respond_with task
   end 
 
   private
