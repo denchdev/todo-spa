@@ -2,8 +2,9 @@ angular.module('todo').controller 'taskCtrl', (taskFactory) ->
   @isEditing = false
   @editingTask = null
 
-  @removeTask = (task) ->
-    taskFactory.removeTask task
+  @removeTask = (project, task) ->
+    taskFactory.removeTask project, task
+    task ={}
 
   @editTask = (task) ->
     console.log 'editTask click'

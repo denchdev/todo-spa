@@ -11,10 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020143247) do
+ActiveRecord::Schema.define(version: 20151102120153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bars", force: :cascade do |t|
+    t.string   "title"
+    t.string   "position"
+    t.string   "state"
+    t.date     "deadline"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bars", ["project_id"], name: "index_bars_on_project_id", using: :btree
+
+  create_table "foos", force: :cascade do |t|
+    t.string   "title"
+    t.string   "position"
+    t.string   "state"
+    t.date     "deadline"
+    t.integer  "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "foos", ["bar_id"], name: "index_foos_on_bar_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -42,6 +66,8 @@ ActiveRecord::Schema.define(version: 20151020143247) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bars", "projects"
+  add_foreign_key "foos", "bars"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
 end

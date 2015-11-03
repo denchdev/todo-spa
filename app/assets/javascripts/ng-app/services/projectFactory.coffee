@@ -12,8 +12,8 @@ angular.module('todo').factory 'projectFactory',
       service.addProject = (project) ->
         projects.post project
 
-      service.removeProject = (project, projects) ->
-        Restangular.one('projects', project.id).remove()  
+      service.removeProject = (project, projects) ->        
+        project.remove()        
           .then ->            
             _.remove(projects, (p) -> p == project)
 

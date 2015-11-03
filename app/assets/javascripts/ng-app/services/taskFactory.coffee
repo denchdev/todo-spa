@@ -5,20 +5,19 @@ angular.module('todo').factory 'taskFactory',
       service = {}      
       
       service.getTasks = (project) ->     
-        console.log 'project in get task taskFactory', project
+        project.all('tasks')
 
       service.createTask = (project, task) ->        
-        Restangular.one('projects', project.id).all('tasks').post task
+        project.all('tasks').post task              
 
-      service.removeTask = (task) -> 
-        Restangular.one('tasks', task.id).remove()
-        task = {}
-    
+      service.removeTask = (project, task) -> 
+        project.one('tasks', task.id).remove()
+          .then ->
+            _.remove(project.tasks, (t) -> t == task)
+
+
       service.updateTask = (task) ->         
         Restangular.one("tasks", task.id).patch task 
-
-
-
 
       service    
   ]

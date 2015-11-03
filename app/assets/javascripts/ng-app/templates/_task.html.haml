@@ -1,5 +1,7 @@
 %div{"ng-if": "!taskCtrl.isEditing"}
   %div.pull-right
+    %span.glyphicon.glyphicon-calendar.management{"ng-click": ""}
+    %span.glyphicon.glyphicon-comment.management{"ng-click": ""}
     %span.glyphicon.glyphicon-pencil.management{"ng-click": "taskCtrl.editTask(task)"}
     %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.removeTask(project, task)"}
   %div

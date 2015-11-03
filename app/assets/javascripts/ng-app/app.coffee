@@ -1,43 +1,27 @@
 angular.module('todo', [
   'templates', 
   'restangular', 
-  'ui.router'
+  'ui.router',
+  'xeditable'
 ])
   .config ['RestangularProvider', (RestangularProvider) -> 
-
     RestangularProvider
-      .setBaseUrl '/'
-      .setRestangularFields
-        id: '_id.$oid'      
-      .setMethodOverriders ['put', 'delete'] 
+      .setBaseUrl '/'      
       .setRequestSuffix '.json' 
+      .setErrorInterceptor (response, deferred, responseHandler) ->
+        if response.status == 403
+          $http(response.config).then(responseHandler, deferred.reject)
+          location.href = "/#/"
+          return false
       
   ]
-  .config ['$stateProvider', '$urlRouterProvider',
-    ($stateProvider, $urlRouterProvider) ->
-      $stateProvider
-        .state 'projects',
-          url: '/projects',
-          templateUrl: 'ng-app/templates/projects.html',
-          controller: 'projectsCtrl'
 
-        .state 'new_project',
-          url: '/projects/new',
-          templateUrl: 'ng-app/templates/new_project.html',
-          controller: 'newProjectsCtrl'
+  .run ['editableOptions', 'editableThemes',
+    (editableOptions, editableThemes)->     
+      editableThemes.bs3.inputClass = 'input-lg'
+      editableThemes.bs3.buttonsClass = 'btn-lg'
+      editableOptions.theme = 'bs3'
+  ] 
 
-        .state 'log_in',
-          url: '/log_in',
-          template: '<h1>LOG IN</h1>',
-          controller:''
-
-
-
-      $urlRouterProvider.otherwise '/projects'
-
-
-  ]
-
-  
-
+ 
  

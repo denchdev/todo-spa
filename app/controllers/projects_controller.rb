@@ -14,6 +14,12 @@ class ProjectsController < ApplicationController
   def destroy
      respond_with Project.destroy params[:id]
   end
+
+  def update
+    project = Project.find params[:id]
+    project.update project_params
+    respond_with project
+  end
   
   private
   def project_params
