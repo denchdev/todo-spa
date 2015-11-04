@@ -6,14 +6,7 @@ angular.module('todo').controller 'taskCtrl', (taskFactory) ->
     taskFactory.removeTask project, task
     task ={}
 
-  @editTask = (task) ->
-    console.log 'editTask click'
-    @isEditing = true
-    @editingTask = angular.copy task
-
-  @updateTask = ->
-    taskFactory.updateTask @editingTask
-    @editingTask = null
-    @isEditing = false
+  @updateTask = (project, task, data)->  
+    project.patch({title:data}) 
 
   @

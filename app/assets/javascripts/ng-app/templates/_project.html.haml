@@ -2,7 +2,7 @@
   .pull-right    
     %span.glyphicon.glyphicon-remove.management{"ng-click": "projectCtrl.removeProject(project, projectsCtrl.projects)"} 
   %span{"editable-text": "project.title", "onaftersave": "projectCtrl.updateProject(project, $data)"}
-    {{ project.title || 'empty' }}     
+    {{ project.title }}     
   
 
 .new-card

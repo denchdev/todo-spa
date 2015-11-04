@@ -1,15 +1,13 @@
-%div{"ng-if": "!taskCtrl.isEditing"}
-  %div.pull-right
-    %span.glyphicon.glyphicon-calendar.management{"ng-click": ""}
-    %span.glyphicon.glyphicon-comment.management{"ng-click": ""}
-    %span.glyphicon.glyphicon-pencil.management{"ng-click": "taskCtrl.editTask(task)"}
-    %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.removeTask(project, task)"}
-  %div
-    {{task.title}}
 
-%div{"ng-if": "taskCtrl.isEditing"}
-  %form{"ng-submit": "taskCtrl.updateTask()"}
-    %input{"close-editing": "", "is-editing": "cardCtrl.isEditing", "ng-model": "taskCtrl.editingTask.title"}
-    %select.select-list{"ng-model": "taskCtrl.editingTask.project_id", "ng-change": "taskCtrl.updateTask()", "ng-options": "project.id as project.projectTitle for project in projectCtrl.projects"}   
-          
+%div.pull-right  
+  %span{"editable-date": "task.deadline", "onaftersave": ""}
+    %span.glyphicon.glyphicon-calendar.management
+    {{ (task.deadline | date: 'dd/MM') || 'set' }}
+  %span.glyphicon.glyphicon-comment.management{"ng-click": ""}    
+  %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.removeTask(project, task)"}
+%div
+  %input{"type": "checkbox", "ng-checked": "", "ng-click": "", "style": "border-right: 1px solid #000;"}
+  %span{"editable-text": "task.title", "onaftersave": ""}
+    {{ task.title }} 
+
 %div{"comment": "value"}
