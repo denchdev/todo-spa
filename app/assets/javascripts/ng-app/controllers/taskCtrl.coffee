@@ -1,12 +1,18 @@
-angular.module('todo').controller 'taskCtrl', (taskFactory) ->  
-  @isEditing = false
-  @editingTask = null
+angular.module('todo').controller 'taskCtrl', 
+  ['taskFactory', (taskFactory) ->  
+        
+    @removeTask = (project, task) ->
+      taskFactory.removeTask project, task
+      task ={}
 
-  @removeTask = (project, task) ->
-    taskFactory.removeTask project, task
-    task ={}
+    @updateTask = (project, task, data)->  
+    	taskFactory.updateTask project, task, data
 
-  @updateTask = (project, task, data)->  
-    project.patch({title:data}) 
+    @changeStatus = (project, task) ->
+      task.state = !task.state
+      @updateTask project, task, {state: task.state}    
+     
 
-  @
+
+    @
+  ]

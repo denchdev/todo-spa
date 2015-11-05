@@ -1,18 +1,25 @@
-%h2
-  .pull-right    
-    %span.glyphicon.glyphicon-remove.management{"ng-click": "projectCtrl.removeProject(project, projectsCtrl.projects)"} 
-  %span{"editable-text": "project.title", "onaftersave": "projectCtrl.updateProject(project, $data)"}
-    {{ project.title }}     
+.panel.panel-info
+  .panel-heading
+    .pull-right    
+      %span.glyphicon.glyphicon-remove.management{"ng-click": "projectCtrl.removeProject(project, projectsCtrl.projects)"} 
+    %span.glyphicon.glyphicon-tasks
+    %span{"editable-text": "project.title", "onaftersave": "projectCtrl.updateProject(project, {title: $data})"}
+      {{ project.title }}     
   
+  .panel-body 
+    .new-task      
+      %form{"ng-submit": "projectCtrl.createTask(project)"}
+        .input-group
+          %span.input-group-addon.glyphicon.glyphicon-plus.green
+          %input.form-control{"ng-model": "projectCtrl.task.title", "placeholder": "New Task"}
+          .input-group-btn  
+            %button.btn.btn-success
+              New task
 
-.new-card
-  %span.glyphicon.glyphicon-plus.pull-left
-  %form{"ng-submit": "projectCtrl.createTask(project)"}
-    %input.card-input{"ng-model": "projectCtrl.task.title", "placeholder": "New Task"}
-    %button.btn.btn-success.pull-right
-      New task
-
-.task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in project.tasks"}
-  %div{"task": "value"}
+    .task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in project.tasks"}
+      .undone{"ng-hide": "task.state"}  
+        %div{"task": "value"}
+      .done{"ng-show": "task.state"} 
+        %div{"task": "value"}
 
 

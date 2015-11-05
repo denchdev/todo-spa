@@ -1,13 +1,26 @@
-
 %div.pull-right  
-  %span{"editable-date": "task.deadline", "onaftersave": ""}
+  %span.management{"editable-date": "task.deadline", "onaftersave": "taskCtrl.updateTask(project, task, {deadline: $data})"}
     %span.glyphicon.glyphicon-calendar.management
-    {{ (task.deadline | date: 'dd/MM') || 'set' }}
-  %span.glyphicon.glyphicon-comment.management{"ng-click": ""}    
+    {{ (task.deadline | date: 'dd/MM/yy') }}
+  %span.glyphicon.glyphicon-comment.management{"ng-click": "projectCtrl.commentTask(task)"}    
   %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.removeTask(project, task)"}
-%div
-  %input{"type": "checkbox", "ng-checked": "", "ng-click": "", "style": "border-right: 1px solid #000;"}
-  %span{"editable-text": "task.title", "onaftersave": ""}
+%div  
+  %input{"type": "checkbox", "ng-checked": "task.state", "ng-click": "taskCtrl.changeStatus(project, task)"}
+  %span{"editable-text": "task.title", "onaftersave": "taskCtrl.updateTask(project, task, {title: $data})"}
     {{ task.title }} 
 
-%div{"comment": "value"}
+%div{"ng-show": "projectCtrl.isCommentTask(task)"}  
+  %h4 
+    Comments
+  %div{"comment": "value"}
+  
+  %h5
+    New comment
+  .new-comment      
+    %form{"ng-submit": ""}
+      %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "New comment", "required": ""}
+      %button.btn.btn-success
+        Choice file          
+      %button.btn.btn-success
+        Add comment
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102120153) do
+ActiveRecord::Schema.define(version: 20151105150213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20151102120153) do
   end
 
   add_index "bars", ["project_id"], name: "index_bars_on_project_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["task_id"], name: "index_comments_on_task_id", using: :btree
 
   create_table "foos", force: :cascade do |t|
     t.string   "title"
@@ -45,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151102120153) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "position"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
@@ -52,11 +62,11 @@ ActiveRecord::Schema.define(version: 20151102120153) do
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.string   "position"
-    t.string   "state"
     t.date     "deadline"
     t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "state",      default: false
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
@@ -67,6 +77,7 @@ ActiveRecord::Schema.define(version: 20151102120153) do
   end
 
   add_foreign_key "bars", "projects"
+  add_foreign_key "comments", "tasks"
   add_foreign_key "foos", "bars"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"

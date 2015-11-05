@@ -18,6 +18,13 @@ class TasksController < ApplicationController
     respond_with project, task
   end 
 
+  def update
+    project = Project.find params[:project_id]
+    task = project.tasks.find params[:id]
+    task.update task_params
+    respond_with project, task
+  end
+
   def destroy
     project = Project.find params[:project_id] 
     task = project.tasks.destroy params[:id] 

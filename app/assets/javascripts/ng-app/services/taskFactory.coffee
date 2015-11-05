@@ -16,8 +16,8 @@ angular.module('todo').factory 'taskFactory',
             _.remove(project.tasks, (t) -> t == task)
 
 
-      service.updateTask = (task) ->         
-        Restangular.one("tasks", task.id).patch task 
+      service.updateTask = (project, task, data) ->         
+        project.one('tasks', task.id).patch data 
 
       service    
   ]

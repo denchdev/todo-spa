@@ -13,7 +13,7 @@ angular.module('todo').factory 'projectFactory',
         projects.post project
 
       service.updateProject = (project, data) ->
-        project.patch({title:data}) 
+        project.patch(data) 
 
       service.removeProject = (project, projects) ->        
         project.remove()        

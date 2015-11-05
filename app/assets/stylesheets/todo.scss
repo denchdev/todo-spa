@@ -1,33 +1,49 @@
 body{
-    margin: 0;
+    margin: 0px;
     padding: 0;
     font-size: 16px;
     font-family: 'Yesteryear', cursive;
+    background-image: image_url('bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 header{
     background-color: #205c7e;
     color: #FFF;
-    margin: 0;
+    margin: 0px 0px 20px 0px;
     padding: .2em;
     overflow: hidden;
-}
-
-input{
-  border-radius: 4px;
 }
 
 .management{    
     cursor: pointer;
     margin: 3px;
+    color: #5bc0de;
+}
+
+.green {
+    background-color: #5cb85c;
+    color: white;
 }
 
 .task{
     padding: 10px;
-    background-color: #FFF;
-    border-radius: 4px;
-    margin: 10px 0;
-    border: 1px solid #b9b9b9;
-    position: relative;
+    background-color: #fff;    
+    margin: 0;
+    border-top: 3px solid #e3e3e3;
+    
+}
+
+.new-task {
+    margin: 0;
+    padding: 10px;
+    background-color: #e3e3e3;
+
+}
+
+.panel-body {
+    padding: 3px;
 }
 
 .app-name{    
@@ -49,96 +65,12 @@ input{
     margin: 10px;
 }
 
-
-
-.list h1{
-  font-size: 16px;
-  font-weight: 700;
+.done {
+    text-decoration: line-through;
+    background-color: #e3e3e3;
 }
 
-.list input{
-  margin-bottom:0;
-}
-
-.list.new-list{
-  background-color: #628DA4;
-}
-
-.list-inline{
-    display: inline-block;
-}
-
-.lists-container{
-  padding: 20px;
-  position: relative;
-}
-
-.remove{
-    width: 15px;
-    height: 15px;
-    background: url(x.svg);
-}
-
-.remove-small{
-    width: 10px;
-    height: 10px;
-    background: url(x_sm.svg);
-}
-
-
-
-
-
-.edit{
-    width: 15px;
-    height: 15px;
-    background: url(pen_alt_stroke.svg);
-}
-
-.edit-small{
-    width: 10px;
-    height: 10px;
-    background: url(pen_alt_stroke_sm.svg);
-}
-
-.edit-card{
-    display: block;
-    position: absolute;
-    top: 3px;
-    right: 20px;
-}
-
-.edit:hover{
-    background: url(pen_alt_fill.svg);
-}
-
-.edit_sm:hover{
-    background: url(pen_alt_fill_sm.svg);
-}
-
-.card:hover{
-    border-color: #205c7e;
-}
-
-
+.undone {
     
-
-input.search{
-    width: 200px;
-    margin-top: 4px;
-    margin-bottom: 0;
-    margin-right: 10px;
 }
 
-.select-list{
-    margin: 10px 0 0 0;
-}
-
-.header-link{
-    color: #FFF;
-    vertical-align: middle;
-}
-
-.header-link:hover{
-    color: #e3e3e3;
-}
