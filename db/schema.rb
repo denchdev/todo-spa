@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105150213) do
+ActiveRecord::Schema.define(version: 20151109135049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attached_files", force: :cascade do |t|
+    t.string   "file"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "attached_files", ["comment_id"], name: "index_attached_files_on_comment_id", using: :btree
 
   create_table "bars", force: :cascade do |t|
     t.string   "title"
@@ -76,6 +85,7 @@ ActiveRecord::Schema.define(version: 20151105150213) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "attached_files", "comments"
   add_foreign_key "bars", "projects"
   add_foreign_key "comments", "tasks"
   add_foreign_key "foos", "bars"
