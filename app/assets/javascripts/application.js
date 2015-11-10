@@ -1,7 +1,11 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
 //= require angular
 //= require lodash
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require restangular
 //= require angular-xeditable
+//= require angular-ui-sortable
 //= require_tree .

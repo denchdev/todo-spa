@@ -1,76 +1,80 @@
 body{
-    margin: 0px;
-    padding: 0;
-    font-size: 16px;
-    font-family: 'Yesteryear', cursive;
-    background-image: image_url('bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  margin: 0px;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Yesteryear', cursive;
+  background-image: image_url('bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
     
 }
 header{
-    background-color: #205c7e;
-    color: #FFF;
-    margin: 0px 0px 20px 0px;
-    padding: .2em;
-    overflow: hidden;
+  background-color: #205c7e;
+  color: #FFF;
+  margin: 0px 0px 20px 0px;
+  padding: .2em;
+  overflow: hidden;
 }
 
 .management{    
-    cursor: pointer;
-    margin: 3px;
-    color: #5bc0de;
+  cursor: pointer;
+  margin: 3px;
+  color: #5bc0de;
 }
 
 .green {
-    background-color: #5cb85c;
-    color: white;
+  background-color: #5cb85c;
+  color: white;
 }
 
 .task{
-    padding: 10px;
-    background-color: #fff;    
-    margin: 0;
-    border-top: 3px solid #e3e3e3;
-    
+  padding: 10px;
+  background-color: #fff;    
+  margin: 0;
+  border-top: 3px solid #e3e3e3;
+  
 }
 
 .new-task {
-    margin: 0;
-    padding: 10px;
-    background-color: #e3e3e3;
+  margin: 0;
+  padding: 10px;
+  background-color: #e3e3e3;
 
 }
 
 .panel-body {
-    padding: 3px;
+  padding: 3px;
 }
 
 .app-name{    
-    color: #fff;
-    font-weight: 500;
-    font-size: 2em;
-    margin: 0;
-    padding: 0;
-    text-indent: .5em;
+  color: #fff;
+  font-weight: 500;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  text-indent: .5em;
 }
 
 .project{    
-    background-color: #e3e3e3;
-    border-radius: 4px;
-    padding: 10px;
-    border: 1px solid #999;
-    vertical-align: top;
-    position: relative;
-    margin: 10px;
+  background-color: #e3e3e3;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid #999;
+  vertical-align: top;
+  position: relative;
+  margin: 10px;
 }
 
 .done {
-    text-decoration: line-through;
-    background-color: #e3e3e3;
+  text-decoration: line-through;
+  background-color: #e3e3e3;
 }
 
 .undone {
-    
+  
+}
+
+.red {
+  background-color: red;
 }
 

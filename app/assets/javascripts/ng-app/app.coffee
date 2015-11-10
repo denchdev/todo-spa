@@ -2,7 +2,8 @@ angular.module('todo', [
   'templates', 
   'restangular', 
   'ui.router',
-  'xeditable'
+  'xeditable',
+  'ui.sortable'
 ])
   .config ['RestangularProvider', (RestangularProvider) -> 
     RestangularProvider

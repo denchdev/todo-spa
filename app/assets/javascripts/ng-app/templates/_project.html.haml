@@ -11,7 +11,7 @@
       %form{"ng-submit": "projectCtrl.createTask(project)"}
         .input-group
           %span.input-group-addon.glyphicon.glyphicon-plus.green
-          %input.form-control{"ng-model": "projectCtrl.task.title", "placeholder": "New Task"}
+          %input.form-control{"ng-model": "projectCtrl.task.title", "placeholder": "New Task", "required": ""}
           .input-group-btn  
             %button.btn.btn-success
               New task

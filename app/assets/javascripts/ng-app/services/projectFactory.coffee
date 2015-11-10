@@ -7,7 +7,8 @@ angular.module('todo').factory 'projectFactory',
       projects = Restangular.all('projects')
 
       service.getProjects = ->
-        projects.getList().$object        
+        projects.getList().$object      
+
 
       service.addProject = (project) ->
         projects.post project

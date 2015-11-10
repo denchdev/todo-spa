@@ -1,3 +1,9 @@
-comments  
+.row
+  %span{"editable-text": "comment.text","onaftersave": ""}
+    {{ comment.text }}
+  %span.glyphicon.glyphicon-remove.management{"ng-click": ""}
 
-
+%ul.attachments.list-inline
+  %li.attached-file{"ng-repeat"=>"attached_file in comment.attached_files"}
+    %a{"href": "{{ attached_file.attachment_url }}"}      
+      = "{{ attached_file.attachment_identifier }}"

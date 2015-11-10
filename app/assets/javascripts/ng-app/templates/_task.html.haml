@@ -9,16 +9,15 @@
   %span{"editable-text": "task.title", "onaftersave": "taskCtrl.updateTask(project, task, {title: $data})"}
     {{ task.title }} 
 
-%div{"ng-show": "projectCtrl.isCommentTask(task)"}  
-  %h4 
-    Comments
-  %div{"comment": "value"}
+%div{"ng-show": "projectCtrl.isCommentTask(task)", "ng-controller": "commentCtrl as commentCtrl"}  
+  .comment{"ng-repeat": "comment in task.comments"}      
+    %div{"comment": "value"}
   
   %h5
     New comment
   .new-comment      
-    %form{"ng-submit": ""}
-      %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "New comment", "required": ""}
+    %form{"ng-submit": "createComment(task)"}
+      %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": ""}
       %button.btn.btn-success
         Choice file          
       %button.btn.btn-success

@@ -1,5 +1,5 @@
 .col-md-8.col-md-offset-2
-  .row    
+  .row{"ng-model": "projectsCtrl.projects", "ui-sortable": "projectsCtrl.sortableOptions"}      
     %div{"ng-controller": "projectCtrl as projectCtrl", "ng-repeat": "project in projectsCtrl.projects"}
       %div{"project": "value"}
   
