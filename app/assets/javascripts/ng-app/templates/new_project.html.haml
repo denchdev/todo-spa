@@ -1,9 +1,14 @@
-.row{"ng-controller": "newProjectsCtrl as newProjectsCtrl"}
-  %h2
-    New project
-  %form{"ng-submit": "newProjectsCtrl.create()"}
-    .form-group
-      %input.form-control{"ng-model": "newProjectsCtrl.project.title", "required": "", "autofocus": "", "placeholder": "Project title"}
+.col-md-8.col-md-offset-2{"ng-controller": "newProjectsCtrl as newProjectsCtrl"}
+  .panel.panel-info
+    .panel-heading
+      %h4
+        New project
+    
+    .panel-body   
+      %form{"ng-submit": "newProjectsCtrl.create()"}
+        .form-group   
+          %input.form-control.new-project{"ng-model": "newProjectsCtrl.project.title", "required": "", "autofocus": "", "placeholder": "Project title"}            
+          %button.btn.btn-success.btn-block.new-project{"type": "submit"}
+            Create
 
-      %button.btn.btn-success.btn-block{"type": "submit"}
-        Create
+      

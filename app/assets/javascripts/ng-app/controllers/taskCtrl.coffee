@@ -1,11 +1,8 @@
 angular.module('todo').controller 'taskCtrl', 
   ['taskFactory', 'commentFactory', (taskFactory, commentFactory) ->  
 
-    @createComment = (task) ->
-      taskFactory.createTask task, @comment
-        .then (data)->
-          task.comments.push data
-      @comment = {}
+    @createComment = (task) ->      
+      console.log task
         
     @removeTask = (project, task) ->
       taskFactory.removeTask project, task

@@ -8,7 +8,8 @@ angular.module('todo').factory 'commentFactory',
         task.all('comments')  
 
       service.createComment = (task, comment) ->
-        task.all('comments').post comment    
+        task.all('comments').post comment   
+        console.log task 
 
       service.updateComment = () ->    
 

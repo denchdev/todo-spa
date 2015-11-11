@@ -4,9 +4,6 @@ angular.module('todo').factory 'taskFactory',
     (Restangular)->
       service = {}      
       
-      service.getTasks = (project) ->     
-        project.all('tasks')
-
       service.createTask = (project, task) ->        
         project.all('tasks').post task              
 

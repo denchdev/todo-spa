@@ -1,1 +1,5 @@
-angular.module('todo').controller 'commentCtrl', []
+angular.module('todo').controller 'commentCtrl',
+  ['commentFactory'
+  (commentFactory) ->
+
+  ]

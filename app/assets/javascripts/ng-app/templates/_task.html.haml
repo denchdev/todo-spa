@@ -16,10 +16,8 @@
   %h5
     New comment
   .new-comment      
-    %form{"ng-submit": "createComment(task)"}
-      %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": ""}
-      %button.btn.btn-success
-        Choice file          
+    %form{"ng-submit": "taskCtrl.createComment(task)"}
+      %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": ""}              
       %button.btn.btn-success
         Add comment
 
