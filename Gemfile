@@ -9,6 +9,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-facebook'
 gem 'cancancan'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+gem 'cloudinary'
 gem 'mini_magick'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'haml-rails', '~> 0.9'
@@ -17,6 +18,9 @@ gem 'angular-rails-templates'
 gem 'sprockets', '2.12.3'
 gem 'responders', '~> 2.0'
 gem 'angular_rails_csrf'
+
+
+
 
 group :development, :test do
   gem 'byebug'

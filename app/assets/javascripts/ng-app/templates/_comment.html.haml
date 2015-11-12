@@ -1,9 +1,13 @@
-.row
-  %span{"editable-text": "comment.text","onaftersave": ""}
+.container-fluid.well.well-sm
+  .pull-right
+    %span.glyphicon.glyphicon-remove.management{"ng-click": "commentCtrl.removeComment(project, task, comment)"}
+  %span{"editable-text": "comment.text","onaftersave": "commentCtrl.updateComment(project, task, comment, {text: $data})"}    
     {{ comment.text }}
-  %span.glyphicon.glyphicon-remove.management{"ng-click": ""}
+  %br
+  attache_file
+  
 
 %ul.attachments.list-inline
-  %li.attached-file{"ng-repeat"=>"attached_file in comment.attached_files"}
+  %li.attached-file{"ng-repeat": "attached_file in comment.attached_files"}
     %a{"href": "{{ attached_file.attachment_url }}"}      
       = "{{ attached_file.attachment_identifier }}"

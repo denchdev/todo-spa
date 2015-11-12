@@ -10,14 +10,26 @@
     {{ task.title }} 
 
 %div{"ng-show": "projectCtrl.isCommentTask(task)", "ng-controller": "commentCtrl as commentCtrl"}  
+  %br
   .comment{"ng-repeat": "comment in task.comments"}      
     %div{"comment": "value"}
   
-  %h5
-    New comment
   .new-comment      
-    %form{"ng-submit": "taskCtrl.createComment(task)"}
-      %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": ""}              
-      %button.btn.btn-success
-        Add comment
+    %form{"ng-submit": "taskCtrl.createComment(project, task)"}
+      .form-group
+        %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": "value"} 
+      .form-group
+        %input{"type": "file", "nv-file-select": "", "multiple": "",  "uploader": "uploader"}
+        %br
+        %ul.attachments.list-inline
+          %li.attached-file{"ng-repeat"=>"item in uploader.queue"}
+            %span
+              %i.fa.fa-file
+              %span{"ng-bind"=>"item.file.name"}
+              %i.fa.fa-trash{"ng-click"=>"uploader.removeFromQueue(item)"}       
+        %button.btn.btn-success
+          Add comment
+
+     
+  
 

@@ -8,4 +8,5 @@
 //= require restangular
 //= require angular-xeditable
 //= require angular-ui-sortable
+//= require angular-file-upload
 //= require_tree .

@@ -3,7 +3,8 @@ angular.module('todo', [
   'restangular', 
   'ui.router',
   'xeditable',
-  'ui.sortable'
+  'ui.sortable',
+  'angularFileUpload'
 ])
   .config ['RestangularProvider', (RestangularProvider) -> 
     RestangularProvider

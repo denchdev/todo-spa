@@ -2,20 +2,18 @@ angular.module('todo').factory 'commentFactory',
   [
     'Restangular', 
     (Restangular)->
-      service = {}      
-      
-      service.getComments = (task) ->
-        task.all('comments')  
+      service = {} 
 
-      service.createComment = (task, comment) ->
-        task.all('comments').post comment   
-        console.log task 
+      service.createComment = (project, task, comment) ->
+        project.one('tasks', task.id).all('comments').post comment    
 
-      service.updateComment = () ->    
+      service.removeComment = (project, task, comment) -> 
+        project.one('tasks', task.id).one('comments', comment.id).remove()
+          .then ->
+            _.remove(task.comments, (c) -> c == comment)
 
-      service.removeComment = () ->        
-
-      
-
+      service.updateComment = (project, task, comment, data) ->         
+        project.one('tasks', task.id).one('comments', comment.id).patch data   
+        
       service    
   ]

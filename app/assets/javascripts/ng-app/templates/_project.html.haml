@@ -15,7 +15,8 @@
           .input-group-btn  
             %button.btn.btn-success
               New task
-
+             
+    
     .task{"ng-controller": "taskCtrl as taskCtrl", "ng-repeat": "task in project.tasks"}
       .undone{"ng-hide": "task.state"}  
         %div{"task": "value"}

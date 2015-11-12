@@ -6,7 +6,9 @@ class Project < ActiveRecord::Base
   #validates :user, presence: true
 
   def as_json(options = {})
-    super(options.merge(include: :tasks))
+    super(options.merge({ :include => { :tasks=> 
+                        { :include => { :comments=> 
+                        { :include => { :attached_files => {}}}}}}}))
   end
 
   before_save do 

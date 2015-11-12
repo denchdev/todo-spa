@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
 
 
   def as_json(options = {})
-    super(options.merge(include: :comments))
+    super(options.merge({ :include => { :comments=> 
+                        { :include => { :attached_files => {}}}}}))
   end
 end
