@@ -17,16 +17,7 @@
   .new-comment      
     %form{"ng-submit": "taskCtrl.createComment(project, task)"}
       .form-group
-        %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": "value"} 
-      .form-group
-        %input{"type": "file", "nv-file-select": "", "multiple": "",  "uploader": "uploader"}
-        %br
-        %ul.attachments.list-inline
-          %li.attached-file{"ng-repeat"=>"item in uploader.queue"}
-            %span
-              %i.fa.fa-file
-              %span{"ng-bind"=>"item.file.name"}
-              %i.fa.fa-trash{"ng-click"=>"uploader.removeFromQueue(item)"}       
+        %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": "value"}             
         %button.btn.btn-success
           Add comment
 
