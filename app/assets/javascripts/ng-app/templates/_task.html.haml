@@ -1,7 +1,8 @@
 %div.pull-right  
   %span.management{"editable-date": "task.deadline", "onaftersave": "taskCtrl.updateTask(project, task, {deadline: $data})"}
     %span.glyphicon.glyphicon-calendar.management
-    {{ (task.deadline | date: 'dd/MM/yy') }}
+    = "{{ (task.deadline | date: 'dd/MM/yy') }}"
+
   %span.glyphicon.glyphicon-comment.management{"ng-click": "projectCtrl.commentTask(task)"}    
   %span.glyphicon.glyphicon-remove.management{"ng-click": "taskCtrl.removeTask(project, task)"}
 %div  
@@ -17,9 +18,21 @@
   .new-comment      
     %form{"ng-submit": "taskCtrl.createComment(project, task)"}
       .form-group
-        %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": "value"}             
-        %button.btn.btn-success
-          Add comment
+        %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": "value"}   
+      .form-group
+        %input.form-control{"type": "file", "nv-file-over": "", "multiple": "", "uploader": "commentCtrl.uploader", "ng-model": "taskCtrl.comment.file"}
+        %br          
+        %ul
+          %li.attached-file{"ng-repeat": "item in uploader.queue"}
+            %span
+              Name: 
+              %span{"ng-bind": "item.file.name"}              
+              %button{"ng-click": "uploader.removeFromQueue(item)"}
+                Delete
+            %br
+
+      %button.btn.btn-success
+        Add comment
 
      
   
