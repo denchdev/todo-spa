@@ -20,8 +20,11 @@
       .form-group
         %input.form-control{"ng-model": "taskCtrl.comment.text", "placeholder": "Type your comment here...", "required": "value"}   
       .form-group
-        %input.form-control{"type": "file", "nv-file-over": "", "multiple": "", "uploader": "commentCtrl.uploader", "ng-model": "taskCtrl.comment.file"}
-        %br          
+        %input.form-control{"type": "file", "nv-file-over": "", "multiple": "", "uploader": "commentCtrl.uploader", "ng-model": "taskCtrl.comment.file"}        
+        %h6
+          Upload queue    
+        %h6
+          Queue length: {{ uploader.queue.length }} pcs
         %ul
           %li.attached-file{"ng-repeat": "item in uploader.queue"}
             %span
@@ -30,6 +33,11 @@
               %button{"ng-click": "uploader.removeFromQueue(item)"}
                 Delete
             %br
+        %div
+          %h6
+            Queue progress:
+          .progress
+            .progress-bar{"role": "progressbar", "ng-style": "{ 'width': uploader.progress + '%' }"}
 
       %button.btn.btn-success
         Add comment
